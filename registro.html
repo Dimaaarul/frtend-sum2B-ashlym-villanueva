@@ -25,63 +25,51 @@
           </div>
 
           <div class="field-grid">
-            <label>
-              Nombre completo
-              <input type="text" name="nombre" required placeholder="Juan Pérez" />
-            </label>
-            <label>
-              Fecha de nacimiento
-              <input type="date" name="fecha-nacimiento" required />
-            </label>
-            <label>
-              DNI
-              <input type="text" name="dni" required placeholder="12345678" maxlength="12" />
-            </label>
-            <label>
-              Correo electrónico
-              <input type="email" name="email" required placeholder="correo@ejemplo.com" />
-            </label>
-            <label>
-              Confirmar correo electrónico
-              <input type="email" name="email-confirm" required placeholder="correo@ejemplo.com" />
-            </label>
-            <label>
-              Contraseña
-              <input type="password" name="password" required placeholder="********" />
-            </label>
-            <label>
-              Confirmar contraseña
-              <input type="password" name="password-confirm" required placeholder="********" />
-            </label>
-            <label>
-              Teléfono de contacto
-              <input type="tel" name="telefono" required placeholder="01112345678" />
-            </label>
-            <label>
-              Dirección del domicilio
-              <input type="text" name="direccion" required placeholder="Calle Falsa 123" />
-            </label>
-            <label>
-              Localidad
-              <input type="text" name="localidad" required placeholder="Ciudad" />
-            </label>
-            <label>
-              Provincia
-              <select name="provincia" required>
-                <option value="">Seleccionar provincia</option>
-                <option>Buenos Aires</option>
-                <option>CABA</option>
-                <option>Catamarca</option>
-                <option>Chaco</option>
-                <option>Chubut</option>
-                <option>Córdoba</option>
-                <option>Corrientes</option>
-                <option>Entre Ríos</option>
-                <option>Formosa</option>
-                <option>Jujuy</option>
-                <option>La Pampa</option>
-              </select>
-            </label>
+            <label for="nombre">Nombre completo <span class="required">*</span></label>
+            <input id="nombre" type="text" name="nombre" required placeholder="Juan Pérez" />
+
+            <label for="fecha-nacimiento">Fecha de nacimiento <span class="required">*</span></label>
+            <input id="fecha-nacimiento" type="date" name="fecha-nacimiento" required />
+
+            <label for="dni">DNI <span class="required">*</span></label>
+            <input id="dni" type="text" name="dni" required placeholder="12345678" maxlength="12" />
+
+            <label for="email">Correo electrónico <span class="required">*</span></label>
+            <input id="email" type="email" name="email" required placeholder="correo@ejemplo.com" />
+
+            <label for="email-confirm">Confirmar correo electrónico <span class="required">*</span></label>
+            <input id="email-confirm" type="email" name="email-confirm" required placeholder="correo@ejemplo.com" />
+
+            <label for="password">Contraseña <span class="required">*</span></label>
+            <input id="password" type="password" name="password" required placeholder="********" />
+
+            <label for="password-confirm">Confirmar contraseña <span class="required">*</span></label>
+            <input id="password-confirm" type="password" name="password-confirm" required placeholder="********" />
+
+            <label for="telefono">Teléfono de contacto <span class="required">*</span></label>
+            <input id="telefono" type="tel" name="telefono" required placeholder="01112345678" />
+
+            <label for="direccion">Dirección del domicilio <span class="required">*</span></label>
+            <input id="direccion" type="text" name="direccion" required placeholder="Calle Falsa 123" />
+
+            <label for="localidad">Localidad <span class="required">*</span></label>
+            <input id="localidad" type="text" name="localidad" required placeholder="Ciudad" />
+
+            <label for="provincia">Provincia <span class="required">*</span></label>
+            <select id="provincia" name="provincia" required>
+              <option value="">Seleccionar provincia</option>
+              <option>Buenos Aires</option>
+              <option>CABA</option>
+              <option>Catamarca</option>
+              <option>Chaco</option>
+              <option>Chubut</option>
+              <option>Córdoba</option>
+              <option>Corrientes</option>
+              <option>Entre Ríos</option>
+              <option>Formosa</option>
+              <option>Jujuy</option>
+              <option>La Pampa</option>
+            </select>
           </div>
         </section>
 
@@ -92,58 +80,54 @@
           </div>
 
           <div class="field-grid">
-            <label>
-              Nombre de la mascota
-              <input type="text" name="mascota-nombre" required placeholder="Max" />
-            </label>
-            <label>
-              Especie
-              <select name="mascota-especie" id="especie" required>
-                <option value="">Seleccionar especie</option>
-                <option>Perro</option>
-                <option>Gato</option>
-                <option>Ave</option>
-                <option>Conejo</option>
-                <option>Reptil</option>
-                <option>Otro</option>
-              </select>
-            </label>
-            <label class="hidden" id="especie-otro-label">
+            <label for="mascota-nombre">Nombre de la mascota <span class="required">*</span></label>
+            <input id="mascota-nombre" type="text" name="mascota-nombre" required placeholder="Max" />
+
+            <label for="especie">Especie <span class="required">*</span></label>
+            <select id="especie" name="mascota-especie" required>
+              <option value="">Seleccionar especie</option>
+              <option>Perro</option>
+              <option>Gato</option>
+              <option>Ave</option>
+              <option>Conejo</option>
+              <option>Reptil</option>
+              <option>Otro</option>
+            </select>
+
+            <label for="especie-otro" class="hidden" id="especie-otro-label">
               Especifique otra especie
-              <input type="text" name="mascota-especie-otro" placeholder="Especifique" />
+              <input id="especie-otro" type="text" name="mascota-especie-otro" placeholder="Especifique" />
             </label>
-            <label>
-              Raza
-              <input type="text" name="mascota-raza" required placeholder="Labrador" />
-            </label>
+
+            <label for="mascota-raza">Raza <span class="required">*</span></label>
+            <input id="mascota-raza" type="text" name="mascota-raza" required placeholder="Labrador" />
+
             <fieldset class="fieldset-inline">
-              <legend>Sexo</legend>
-              <label><input type="radio" name="mascota-sexo" value="Macho" required /> Macho</label>
-              <label><input type="radio" name="mascota-sexo" value="Hembra" /> Hembra</label>
+              <legend>Sexo <span class="required">*</span></legend>
+              <label for="sexo-macho"><input id="sexo-macho" type="radio" name="mascota-sexo" value="Macho" required /> Macho</label>
+              <label for="sexo-hembra"><input id="sexo-hembra" type="radio" name="mascota-sexo" value="Hembra" /> Hembra</label>
             </fieldset>
-            <label>
-              Fecha de nacimiento
-              <input type="date" name="mascota-fecha" required />
-            </label>
-            <label>
-              Color o descripción física
-              <input type="text" name="mascota-color" placeholder="Marrón con blanco" maxlength="120" />
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" name="castrado" />
-              La mascota está castrada o esterilizada
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" name="microchip" id="microchip" />
-              La mascota tiene microchip
-            </label>
-            <label class="hidden" id="chip-numero-label">
+
+            <label for="mascota-fecha">Fecha de nacimiento <span class="required">*</span></label>
+            <input id="mascota-fecha" type="date" name="mascota-fecha" required />
+
+            <label for="mascota-color">Color o descripción física</label>
+            <input id="mascota-color" type="text" name="mascota-color" placeholder="Marrón con blanco" maxlength="120" />
+
+            <fieldset class="fieldset-inline">
+              <legend>Información de salud</legend>
+              <label for="castrado"><input id="castrado" type="checkbox" name="castrado" /> La mascota está castrada o esterilizada</label>
+              <label for="microchip"><input id="microchip" type="checkbox" name="microchip" /> La mascota tiene microchip</label>
+            </fieldset>
+
+            <label for="chip-numero" class="hidden" id="chip-numero-label">
               Número de microchip
-              <input type="text" name="chip-numero" placeholder="1234-5678-9012" maxlength="20" />
+              <input id="chip-numero" type="text" name="chip-numero" placeholder="1234-5678-9012" maxlength="20" />
             </label>
-            <label class="textarea-label">
+
+            <label for="alergias" class="textarea-label">
               Alergias o condiciones médicas conocidas
-              <textarea name="alergias" maxlength="250" rows="4" placeholder="Describe alergias o condiciones..."></textarea>
+              <textarea id="alergias" name="alergias" maxlength="250" rows="4" placeholder="Describe alergias o condiciones..."></textarea>
               <span class="char-counter" data-max="250">0/250</span>
             </label>
           </div>
@@ -158,54 +142,48 @@
           <div class="field-grid">
             <fieldset>
               <legend>Servicios de interés</legend>
-              <label><input type="checkbox" name="servicios" value="Consulta general" /> Consulta general</label>
-              <label><input type="checkbox" name="servicios" value="Vacunación" /> Vacunación</label>
-              <label><input type="checkbox" name="servicios" value="Cirugía" /> Cirugía</label>
-              <label><input type="checkbox" name="servicios" value="Grooming" /> Grooming</label>
-              <label><input type="checkbox" name="servicios" value="Internación" /> Internación</label>
-              <label><input type="checkbox" name="servicios" value="Tienda online" /> Tienda online</label>
+              <label for="servicio-consulta"><input id="servicio-consulta" type="checkbox" name="servicios" value="Consulta general" /> Consulta general</label>
+              <label for="servicio-vacuna"><input id="servicio-vacuna" type="checkbox" name="servicios" value="Vacunación" /> Vacunación</label>
+              <label for="servicio-cirugia"><input id="servicio-cirugia" type="checkbox" name="servicios" value="Cirugía" /> Cirugía</label>
+              <label for="servicio-grooming"><input id="servicio-grooming" type="checkbox" name="servicios" value="Grooming" /> Grooming</label>
+              <label for="servicio-internacion"><input id="servicio-internacion" type="checkbox" name="servicios" value="Internación" /> Internación</label>
+              <label for="servicio-tienda"><input id="servicio-tienda" type="checkbox" name="servicios" value="Tienda online" /> Tienda online</label>
             </fieldset>
 
             <fieldset class="fieldset-inline">
               <legend>Turno preferido</legend>
-              <label><input type="radio" name="turno" value="Mañana" required /> Mañana</label>
-              <label><input type="radio" name="turno" value="Tarde" /> Tarde</label>
-              <label><input type="radio" name="turno" value="Indistinto" /> Indistinto</label>
+              <label for="turno-manana"><input id="turno-manana" type="radio" name="turno" value="Mañana" required /> Mañana</label>
+              <label for="turno-tarde"><input id="turno-tarde" type="radio" name="turno" value="Tarde" /> Tarde</label>
+              <label for="turno-indistinto"><input id="turno-indistinto" type="radio" name="turno" value="Indistinto" /> Indistinto</label>
             </fieldset>
 
-            <label>
-              Veterinario preferido
-              <select name="veterinario" required>
-                <option value="">Seleccionar</option>
-                <option>Dr. Andrés Molina</option>
-                <option>Dra. Sofía Ramírez</option>
-                <option>Dr. Martín López</option>
-                <option>Sin preferencia</option>
-              </select>
-            </label>
+            <label for="veterinario">Veterinario preferido <span class="required">*</span></label>
+            <select id="veterinario" name="veterinario" required>
+              <option value="">Seleccionar</option>
+              <option>Dr. Andrés Molina</option>
+              <option>Dra. Sofía Ramírez</option>
+              <option>Dr. Martín López</option>
+              <option>Sin preferencia</option>
+            </select>
 
-            <label>
-              Frecuencia estimada de visitas
-              <select name="frecuencia" required>
-                <option value="">Seleccionar frecuencia</option>
-                <option>Primera vez</option>
-                <option>Mensual</option>
-                <option>Cada 3 meses</option>
-                <option>Según necesidad</option>
-              </select>
-            </label>
+            <label for="frecuencia">Frecuencia estimada de visitas <span class="required">*</span></label>
+            <select id="frecuencia" name="frecuencia" required>
+              <option value="">Seleccionar frecuencia</option>
+              <option>Primera vez</option>
+              <option>Mensual</option>
+              <option>Cada 3 meses</option>
+              <option>Según necesidad</option>
+            </select>
 
-            <label>
-              ¿Cómo nos conoció?
-              <select name="conocio" required>
-                <option value="">Seleccionar origen</option>
-                <option>Redes sociales</option>
-                <option>Recomendación</option>
-                <option>Búsqueda web</option>
-                <option>Pasó por el local</option>
-                <option>Otro</option>
-              </select>
-            </label>
+            <label for="conocio">¿Cómo nos conoció? <span class="required">*</span></label>
+            <select id="conocio" name="conocio" required>
+              <option value="">Seleccionar origen</option>
+              <option>Redes sociales</option>
+              <option>Recomendación</option>
+              <option>Búsqueda web</option>
+              <option>Pasó por el local</option>
+              <option>Otro</option>
+            </select>
           </div>
         </section>
 
@@ -216,21 +194,18 @@
           </div>
 
           <div class="field-grid">
-            <label class="textarea-label">
+            <label for="observaciones" class="textarea-label">
               Observaciones adicionales
-              <textarea name="observaciones" maxlength="300" rows="5" placeholder="Escribe aquí cualquier dato adicional..."></textarea>
+              <textarea id="observaciones" name="observaciones" maxlength="300" rows="5" placeholder="Escribe aquí cualquier dato adicional..."></textarea>
               <span class="char-counter" data-max="300">0/300</span>
             </label>
 
-            <label class="checkbox-label">
-              <input type="checkbox" name="recordatorios" /> Acepto recibir recordatorios de turnos por correo electrónico
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" name="terminos" required /> Acepto los <a href="#" class="inline-link">Términos y Condiciones</a>
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" name="privacidad" required /> Acepto la Política de Privacidad
-            </label>
+            <fieldset>
+              <legend>Confirmaciones</legend>
+              <label for="recordatorios"><input id="recordatorios" type="checkbox" name="recordatorios" /> Acepto recibir recordatorios de turnos por correo electrónico</label>
+              <label for="terminos"><input id="terminos" type="checkbox" name="terminos" required /> Acepto los <a href="#" class="inline-link">Términos y Condiciones</a></label>
+              <label for="privacidad"><input id="privacidad" type="checkbox" name="privacidad" required /> Acepto la Política de Privacidad</label>
+            </fieldset>
           </div>
         </section>
 
@@ -249,11 +224,6 @@
       const microchipCheckbox = document.getElementById('microchip');
       const chipNumeroLabel = document.getElementById('chip-numero-label');
       const charCounters = document.querySelectorAll('.char-counter');
-
-      function toggleField(select, targetId, value) {
-        const target = document.getElementById(targetId);
-        target.classList.toggle('hidden', select.value !== 'Otro');
-      }
 
       especieSelect.addEventListener('change', () => {
         const show = especieSelect.value === 'Otro';
