@@ -30,6 +30,13 @@ const fieldMap = {
   privacidad: document.getElementById('privacidad')
 };
 
+// Sección C campos
+fieldMap.servicios = document.getElementsByName('servicios');
+fieldMap.turno = document.getElementsByName('turno');
+fieldMap.veterinario = document.getElementById('veterinario');
+fieldMap.frecuencia = document.getElementById('frecuencia');
+fieldMap.conocio = document.getElementById('conocio');
+
 const regex = {
   nombre: /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ ]+$/,
   dni: /^\d{7,8}$/,
@@ -374,6 +381,73 @@ function validateChipNumero() {
   return true;
 }
 
+// Sección C — Validaciones (Turno, Veterinario, Frecuencia, Cómo nos conoció, Servicios)
+function validateServicios() {
+  const servicios = Array.from(fieldMap.servicios || []);
+  if (servicios.length === 0) return true; // no hay inputs, omitir
+  const checked = servicios.some(cb => cb.checked);
+  const fieldset = servicios[0] ? servicios[0].closest('fieldset') : null;
+  if (!checked) {
+    if (fieldset) showError(fieldset, 'Selecciona al menos un servicio de interés.');
+    return false;
+  }
+  if (fieldset) {
+    fieldset.classList.remove('campo-error');
+    fieldset.classList.add('campo-ok');
+    const existing = fieldset.parentElement.querySelector('.input-error');
+    if (existing) existing.remove();
+  }
+  return true;
+}
+
+function validateTurno() {
+  const turnoGroup = Array.from(fieldMap.turno || []);
+  if (turnoGroup.length === 0) return true;
+  const selected = turnoGroup.some(r => r.checked);
+  const fieldset = turnoGroup[0].closest('fieldset');
+  if (!selected) {
+    showError(fieldset || turnoGroup[0], 'Selecciona un turno preferido.');
+    return false;
+  }
+  if (fieldset) {
+    fieldset.classList.remove('campo-error');
+    fieldset.classList.add('campo-ok');
+    const existing = fieldset.parentElement.querySelector('.input-error');
+    if (existing) existing.remove();
+  }
+  return true;
+}
+
+function validateVeterinario() {
+  const valor = fieldMap.veterinario.value;
+  if (!valor) {
+    showError(fieldMap.veterinario, 'Selecciona un veterinario o "Sin preferencia".');
+    return false;
+  }
+  showSuccess(fieldMap.veterinario);
+  return true;
+}
+
+function validateFrecuencia() {
+  const valor = fieldMap.frecuencia.value;
+  if (!valor) {
+    showError(fieldMap.frecuencia, 'Selecciona la frecuencia estimada de visitas.');
+    return false;
+  }
+  showSuccess(fieldMap.frecuencia);
+  return true;
+}
+
+function validateConocio() {
+  const valor = fieldMap.conocio.value;
+  if (!valor) {
+    showError(fieldMap.conocio, 'Indica cómo nos conociste.');
+    return false;
+  }
+  showSuccess(fieldMap.conocio);
+  return true;
+}
+
 function validateTerminos() {
   if (!fieldMap.terminos.checked) {
     showError(fieldMap.terminos.closest('label') || fieldMap.terminos, 'Debes aceptar los Términos y Condiciones.');
@@ -423,6 +497,11 @@ function validateAll() {
     validateMascotaSexo(),
     validateMascotaFecha(),
     validateChipNumero(),
+    validateServicios(),
+    validateTurno(),
+    validateVeterinario(),
+    validateFrecuencia(),
+    validateConocio(),
     validateTerminos(),
     validatePrivacidad()
   ];
@@ -430,27 +509,65 @@ function validateAll() {
 }
 
 function showConfirmationScreen() {
-  const overlay = document.createElement('div');
-  overlay.className = 'confirmation-overlay';
-  overlay.innerHTML = `
-    <div class="confirmation-card" role="dialog" aria-live="polite">
+  // Ocultar el formulario y mostrar una sección de confirmación con detalles
+  form.style.display = 'none';
+  const owner = fieldMap.nombre.value.trim();
+  const pet = fieldMap.mascotaNombre.value.trim();
+  const regNum = Math.floor(100000 + Math.random() * 900000);
+  const servicios = Array.from(document.getElementsByName('servicios'))
+    .filter(cb => cb.checked)
+    .map(cb => cb.value);
+  const serviciosText = servicios.length ? servicios.join(', ') : 'Ninguno seleccionado';
+
+  const section = document.createElement('section');
+  section.className = 'confirmation-section';
+  section.innerHTML = `
+    <div class="confirmation-card">
       <h2>Registro exitoso</h2>
-      <p>Tu registro en VetCare se ha completado correctamente. Pronto recibirás un correo de confirmación con más detalles y acceso a tus turnos.</p>
-      <button type="button" id="close-confirmation" class="btn btn-primary">Continuar</button>
+      <p>¡Gracias, <strong>${escapeHtml(owner)}</strong>! El registro de <strong>${escapeHtml(pet)}</strong> se ha completado.</p>
+      <p><strong>Número de registro:</strong> ${regNum}</p>
+      <p><strong>Servicios seleccionados:</strong> ${escapeHtml(serviciosText)}</p>
+      <div class="confirmation-actions">
+        <a href="index.html" class="btn btn-secondary">Volver al inicio</a>
+        <button type="button" id="registrar-otra" class="btn btn-primary">Registrar otra mascota</button>
+      </div>
     </div>
   `;
+  form.parentElement.insertBefore(section, form.nextSibling);
 
-  document.body.appendChild(overlay);
-  const closeButton = document.getElementById('close-confirmation');
-  closeButton.focus();
-  closeButton.addEventListener('click', () => {
-    overlay.remove();
+  document.getElementById('registrar-otra').addEventListener('click', () => {
+    section.remove();
+    form.style.display = '';
     form.reset();
     resetValidationState();
     especieOtroLabel.classList.add('hidden');
     chipNumeroLabel.classList.add('hidden');
     charCounters.forEach(counter => counter.textContent = `0/${counter.dataset.max}`);
   });
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function showFormErrorSummary(count) {
+  let summary = form.querySelector('.form-error-summary');
+  if (!summary) {
+    summary = document.createElement('div');
+    summary.className = 'form-error-summary';
+    form.insertBefore(summary, form.firstChild);
+  }
+  summary.textContent = `Se encontraron ${count} error(es). Por favor, corrígelos antes de enviar.`;
+}
+
+function resetFormErrorSummary() {
+  const summary = form.querySelector('.form-error-summary');
+  if (summary) summary.remove();
 }
 
 function attachFieldEvents() {
@@ -480,6 +597,14 @@ function attachFieldEvents() {
     validateChipNumero();
   });
   chipNumeroInput.addEventListener('input', validateChipNumero);
+  // Sección C listeners
+  const servicios = Array.from(fieldMap.servicios || []);
+  servicios.forEach(cb => cb.addEventListener('change', validateServicios));
+  const turnoGroup = Array.from(fieldMap.turno || []);
+  turnoGroup.forEach(r => r.addEventListener('change', validateTurno));
+  fieldMap.veterinario.addEventListener('change', validateVeterinario);
+  fieldMap.frecuencia.addEventListener('change', validateFrecuencia);
+  fieldMap.conocio.addEventListener('change', validateConocio);
   fieldMap.terminos.addEventListener('change', validateTerminos);
   fieldMap.privacidad.addEventListener('change', validatePrivacidad);
 
@@ -487,19 +612,39 @@ function attachFieldEvents() {
     const textarea = counter.parentElement.querySelector('textarea');
     if (!textarea) return;
     textarea.addEventListener('input', () => {
-      counter.textContent = `${textarea.value.length}/${counter.dataset.max}`;
+      const len = textarea.value.length;
+      const max = +counter.dataset.max;
+      counter.textContent = `${len}/${max}`;
+      const pct = (len / max) * 100;
+      counter.classList.remove('counter-warning', 'counter-max');
+      if (pct >= 100) {
+        counter.classList.add('counter-max');
+      } else if (pct >= 80) {
+        counter.classList.add('counter-warning');
+      }
     });
   });
 }
 
 form.addEventListener('submit', event => {
   event.preventDefault();
+  resetFormErrorSummary();
   const isValid = validateAll();
   if (isValid) {
     showConfirmationScreen();
   } else {
+    // mostrar resumen con la cantidad de errores
+    const errors = form.querySelectorAll('.input-error');
+    const count = errors.length;
+    showFormErrorSummary(count);
+    // scroll al primer campo con error
     const firstInvalid = form.querySelector('.campo-error');
-    firstInvalid?.focus();
+    if (firstInvalid) {
+      firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // intentar enfocar un input dentro del field
+      const focusable = firstInvalid.querySelector ? firstInvalid.querySelector('input,select,textarea,button') : null;
+      (focusable || firstInvalid).focus?.();
+    }
   }
 });
 

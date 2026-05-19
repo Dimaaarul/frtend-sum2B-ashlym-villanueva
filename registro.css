@@ -224,6 +224,35 @@ form fieldset label {
   margin-top: 0.45rem;
 }
 
+.form-error-summary {
+  background: #fff4f4;
+  border: 1px solid #f5c2c7;
+  color: #b91c1c;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.char-counter.counter-warning {
+  color: #f97316; /* naranja */
+}
+
+.char-counter.counter-max {
+  color: #dc2626; /* rojo */
+}
+
+.confirmation-section .confirmation-card {
+  max-width: 700px;
+  margin: 2rem auto;
+}
+
+.confirmation-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
 .confirmation-overlay {
   position: fixed;
   inset: 0;
