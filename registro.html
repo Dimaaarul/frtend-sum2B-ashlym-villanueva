@@ -218,30 +218,6 @@
       </form>
     </main>
 
-    <script>
-      const especieSelect = document.getElementById('especie');
-      const especieOtroLabel = document.getElementById('especie-otro-label');
-      const microchipCheckbox = document.getElementById('microchip');
-      const chipNumeroLabel = document.getElementById('chip-numero-label');
-      const charCounters = document.querySelectorAll('.char-counter');
-
-      especieSelect.addEventListener('change', () => {
-        const show = especieSelect.value === 'Otro';
-        especieOtroLabel.classList.toggle('hidden', !show);
-      });
-
-      microchipCheckbox.addEventListener('change', () => {
-        chipNumeroLabel.classList.toggle('hidden', !microchipCheckbox.checked);
-      });
-
-      charCounters.forEach(counter => {
-        const textarea = counter.parentElement.querySelector('textarea');
-        if (!textarea) return;
-        textarea.addEventListener('input', () => {
-          const max = +counter.dataset.max;
-          counter.textContent = `${textarea.value.length}/${max}`;
-        });
-      });
-    </script>
+    <script src="validaciones.js"></script>
   </body>
 </html>
