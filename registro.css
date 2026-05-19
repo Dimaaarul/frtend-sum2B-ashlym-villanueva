@@ -1,0 +1,251 @@
+:root {
+  --background: #f5f7fb;
+  --surface: #ffffff;
+  --primary: #2a6f6d;
+  --primary-soft: #e8f3f3;
+  --accent: #f6a93b;
+  --text: #1f2933;
+  --muted: #6b7d88;
+  --border: #d9e4eb;
+  --radius: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--background);
+  color: var(--text);
+}
+
+body {
+  line-height: 1.6;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.page-header {
+  background: linear-gradient(135deg, rgba(42, 111, 109, 0.95), rgba(79, 179, 191, 0.9));
+  color: white;
+  padding: 2rem 1.5rem;
+}
+
+.header-content {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.header-content .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+.header-content p {
+  margin: 1rem 0 0;
+  max-width: 760px;
+  color: rgba(255,255,255,0.92);
+}
+
+.page-wrapper {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.registration-form {
+  background: var(--surface);
+  border-radius: 32px;
+  padding: 2rem;
+  box-shadow: 0 28px 80px rgba(15, 23, 42, 0.12);
+}
+
+.registration-form h1 {
+  margin: 0 0 1rem;
+  font-size: 2.3rem;
+  color: var(--primary);
+}
+
+.form-section {
+  margin-top: 2.5rem;
+  padding: 2rem;
+  background: var(--primary-soft);
+  border-radius: 24px;
+  border: 1px solid rgba(42, 111, 109, 0.12);
+}
+
+.section-header h2 {
+  margin: 0 0 0.45rem;
+  font-size: 1.35rem;
+}
+
+.section-header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.field-grid {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: white;
+  font: inherit;
+  color: var(--text);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid rgba(46, 123, 117, 0.22);
+  outline-offset: 2px;
+}
+
+.fieldset-inline {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1rem;
+  display: grid;
+  gap: 0.85rem;
+  background: white;
+}
+
+.fieldset-inline legend {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.fieldset-inline label {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1rem;
+}
+
+.checkbox-label input {
+  width: auto;
+}
+
+.textarea-label {
+  position: relative;
+}
+
+.textarea-label textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.char-counter {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  display: inline-block;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.25rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-secondary {
+  background: #edf1f5;
+  color: var(--text);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.return-link {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.return-link a {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 980px) {
+  .field-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .page-header,
+  .page-wrapper {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .registration-form {
+    padding: 1.5rem;
+  }
+
+  .form-section {
+    padding: 1.5rem;
+  }
+}

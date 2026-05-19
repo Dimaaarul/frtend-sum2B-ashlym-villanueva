@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro VetCare</title>
+    <link rel="stylesheet" href="registro.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <div class="header-content">
+        <a class="brand" href="index.html">VetCare</a>
+        <p>Registra tus datos y los de tu mascota para solicitar turnos y acceder a nuestros servicios.</p>
+      </div>
+    </header>
+
+    <main class="page-wrapper">
+      <form class="registration-form" action="#" method="post" novalidate>
+        <h1>Registro de propietario y mascota</h1>
+
+        <section class="form-section">
+          <div class="section-header">
+            <h2>Sección A — Datos del Dueño</h2>
+            <p>Completa tus datos personales para crear tu cuenta en VetCare.</p>
+          </div>
+
+          <div class="field-grid">
+            <label>
+              Nombre completo
+              <input type="text" name="nombre" required placeholder="Juan Pérez" />
+            </label>
+            <label>
+              Fecha de nacimiento
+              <input type="date" name="fecha-nacimiento" required />
+            </label>
+            <label>
+              DNI
+              <input type="text" name="dni" required placeholder="12345678" maxlength="12" />
+            </label>
+            <label>
+              Correo electrónico
+              <input type="email" name="email" required placeholder="correo@ejemplo.com" />
+            </label>
+            <label>
+              Confirmar correo electrónico
+              <input type="email" name="email-confirm" required placeholder="correo@ejemplo.com" />
+            </label>
+            <label>
+              Contraseña
+              <input type="password" name="password" required placeholder="********" />
+            </label>
+            <label>
+              Confirmar contraseña
+              <input type="password" name="password-confirm" required placeholder="********" />
+            </label>
+            <label>
+              Teléfono de contacto
+              <input type="tel" name="telefono" required placeholder="01112345678" />
+            </label>
+            <label>
+              Dirección del domicilio
+              <input type="text" name="direccion" required placeholder="Calle Falsa 123" />
+            </label>
+            <label>
+              Localidad
+              <input type="text" name="localidad" required placeholder="Ciudad" />
+            </label>
+            <label>
+              Provincia
+              <select name="provincia" required>
+                <option value="">Seleccionar provincia</option>
+                <option>Buenos Aires</option>
+                <option>CABA</option>
+                <option>Catamarca</option>
+                <option>Chaco</option>
+                <option>Chubut</option>
+                <option>Córdoba</option>
+                <option>Corrientes</option>
+                <option>Entre Ríos</option>
+                <option>Formosa</option>
+                <option>Jujuy</option>
+                <option>La Pampa</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="form-section">
+          <div class="section-header">
+            <h2>Sección B — Datos de la Mascota</h2>
+            <p>Registra los datos de tu mascota para brindarle el mejor cuidado veterinario.</p>
+          </div>
+
+          <div class="field-grid">
+            <label>
+              Nombre de la mascota
+              <input type="text" name="mascota-nombre" required placeholder="Max" />
+            </label>
+            <label>
+              Especie
+              <select name="mascota-especie" id="especie" required>
+                <option value="">Seleccionar especie</option>
+                <option>Perro</option>
+                <option>Gato</option>
+                <option>Ave</option>
+                <option>Conejo</option>
+                <option>Reptil</option>
+                <option>Otro</option>
+              </select>
+            </label>
+            <label class="hidden" id="especie-otro-label">
+              Especifique otra especie
+              <input type="text" name="mascota-especie-otro" placeholder="Especifique" />
+            </label>
+            <label>
+              Raza
+              <input type="text" name="mascota-raza" required placeholder="Labrador" />
+            </label>
+            <fieldset class="fieldset-inline">
+              <legend>Sexo</legend>
+              <label><input type="radio" name="mascota-sexo" value="Macho" required /> Macho</label>
+              <label><input type="radio" name="mascota-sexo" value="Hembra" /> Hembra</label>
+            </fieldset>
+            <label>
+              Fecha de nacimiento
+              <input type="date" name="mascota-fecha" required />
+            </label>
+            <label>
+              Color o descripción física
+              <input type="text" name="mascota-color" placeholder="Marrón con blanco" maxlength="120" />
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="castrado" />
+              La mascota está castrada o esterilizada
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="microchip" id="microchip" />
+              La mascota tiene microchip
+            </label>
+            <label class="hidden" id="chip-numero-label">
+              Número de microchip
+              <input type="text" name="chip-numero" placeholder="1234-5678-9012" maxlength="20" />
+            </label>
+            <label class="textarea-label">
+              Alergias o condiciones médicas conocidas
+              <textarea name="alergias" maxlength="250" rows="4" placeholder="Describe alergias o condiciones..."></textarea>
+              <span class="char-counter" data-max="250">0/250</span>
+            </label>
+          </div>
+        </section>
+
+        <section class="form-section">
+          <div class="section-header">
+            <h2>Sección C — Preferencias de Atención</h2>
+            <p>Selecciona las opciones que mejor se adapten a tus necesidades de atención.</p>
+          </div>
+
+          <div class="field-grid">
+            <fieldset>
+              <legend>Servicios de interés</legend>
+              <label><input type="checkbox" name="servicios" value="Consulta general" /> Consulta general</label>
+              <label><input type="checkbox" name="servicios" value="Vacunación" /> Vacunación</label>
+              <label><input type="checkbox" name="servicios" value="Cirugía" /> Cirugía</label>
+              <label><input type="checkbox" name="servicios" value="Grooming" /> Grooming</label>
+              <label><input type="checkbox" name="servicios" value="Internación" /> Internación</label>
+              <label><input type="checkbox" name="servicios" value="Tienda online" /> Tienda online</label>
+            </fieldset>
+
+            <fieldset class="fieldset-inline">
+              <legend>Turno preferido</legend>
+              <label><input type="radio" name="turno" value="Mañana" required /> Mañana</label>
+              <label><input type="radio" name="turno" value="Tarde" /> Tarde</label>
+              <label><input type="radio" name="turno" value="Indistinto" /> Indistinto</label>
+            </fieldset>
+
+            <label>
+              Veterinario preferido
+              <select name="veterinario" required>
+                <option value="">Seleccionar</option>
+                <option>Dr. Andrés Molina</option>
+                <option>Dra. Sofía Ramírez</option>
+                <option>Dr. Martín López</option>
+                <option>Sin preferencia</option>
+              </select>
+            </label>
+
+            <label>
+              Frecuencia estimada de visitas
+              <select name="frecuencia" required>
+                <option value="">Seleccionar frecuencia</option>
+                <option>Primera vez</option>
+                <option>Mensual</option>
+                <option>Cada 3 meses</option>
+                <option>Según necesidad</option>
+              </select>
+            </label>
+
+            <label>
+              ¿Cómo nos conoció?
+              <select name="conocio" required>
+                <option value="">Seleccionar origen</option>
+                <option>Redes sociales</option>
+                <option>Recomendación</option>
+                <option>Búsqueda web</option>
+                <option>Pasó por el local</option>
+                <option>Otro</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="form-section">
+          <div class="section-header">
+            <h2>Sección D — Confirmación</h2>
+            <p>Revisa tus datos, acepta los términos y envía tu solicitud.</p>
+          </div>
+
+          <div class="field-grid">
+            <label class="textarea-label">
+              Observaciones adicionales
+              <textarea name="observaciones" maxlength="300" rows="5" placeholder="Escribe aquí cualquier dato adicional..."></textarea>
+              <span class="char-counter" data-max="300">0/300</span>
+            </label>
+
+            <label class="checkbox-label">
+              <input type="checkbox" name="recordatorios" /> Acepto recibir recordatorios de turnos por correo electrónico
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="terminos" required /> Acepto los <a href="#" class="inline-link">Términos y Condiciones</a>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="privacidad" required /> Acepto la Política de Privacidad
+            </label>
+          </div>
+        </section>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Crear cuenta</button>
+          <button type="reset" class="btn btn-secondary">Limpiar</button>
+        </div>
+
+        <p class="return-link"><a href="index.html">Volver al inicio</a></p>
+      </form>
+    </main>
+
+    <script>
+      const especieSelect = document.getElementById('especie');
+      const especieOtroLabel = document.getElementById('especie-otro-label');
+      const microchipCheckbox = document.getElementById('microchip');
+      const chipNumeroLabel = document.getElementById('chip-numero-label');
+      const charCounters = document.querySelectorAll('.char-counter');
+
+      function toggleField(select, targetId, value) {
+        const target = document.getElementById(targetId);
+        target.classList.toggle('hidden', select.value !== 'Otro');
+      }
+
+      especieSelect.addEventListener('change', () => {
+        const show = especieSelect.value === 'Otro';
+        especieOtroLabel.classList.toggle('hidden', !show);
+      });
+
+      microchipCheckbox.addEventListener('change', () => {
+        chipNumeroLabel.classList.toggle('hidden', !microchipCheckbox.checked);
+      });
+
+      charCounters.forEach(counter => {
+        const textarea = counter.parentElement.querySelector('textarea');
+        if (!textarea) return;
+        textarea.addEventListener('input', () => {
+          const max = +counter.dataset.max;
+          counter.textContent = `${textarea.value.length}/${max}`;
+        });
+      });
+    </script>
+  </body>
+</html>
